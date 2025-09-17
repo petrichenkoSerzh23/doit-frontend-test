@@ -1,6 +1,7 @@
-import ReduxProvider from "./providers/ReduxProvider"
-import ThemeProvider from "./providers/ThemeProvider";
 import "./globals.css";
+import ReduxProvider from "./providers/ReduxProvider";
+import ThemeProvider from "./providers/ThemeProvider";
+import AppLayoutClient from "./AppLayoutClient";
 
 export const metadata = {
   title: "DOiT MVP",
@@ -12,8 +13,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ReduxProvider>
-          <ThemeProvider>  {children}</ThemeProvider>
-        
+          <ThemeProvider>
+            <AppLayoutClient>{children}</AppLayoutClient>
+          </ThemeProvider>
         </ReduxProvider>
       </body>
     </html>

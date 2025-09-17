@@ -1,19 +1,22 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { AppBar, Toolbar, IconButton, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { useTheme } from '@mui/material/styles';
-import ThemeToggle from './ThemeToggle';
+import React from "react";
+import { AppBar, Toolbar, IconButton, Typography } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useTheme } from "@mui/material/styles";
+import ThemeToggle from "./ThemeToggle";
 
 export default function AppBarCustom({ onMenuClick }) {
   const theme = useTheme();
 
   return (
-    <AppBar position="static" sx={{
-      backgroundColor: "#2196f3", // завжди синій
-      color: "#fff",              // текст і іконки білі
-    }}>
+    <AppBar
+      position="static"
+      sx={{
+        backgroundColor: "#2196f3", // завжди синій
+        color: "#fff", // текст і іконки білі
+      }}
+    >
       <Toolbar>
         {/* Кнопка відкриття Drawer */}
         <IconButton

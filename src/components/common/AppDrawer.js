@@ -3,15 +3,20 @@ import {
   Drawer,
   List,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
   Box,
 } from "@mui/material";
+import Link from "next/link";
+import HomeIcon from "@mui/icons-material/Home"; // головна
+import ArticleIcon from "@mui/icons-material/Article"; // усі пости
+import PostAddIcon from "@mui/icons-material/PostAdd";
 
 export default function DrawerMenu({ open, onClose, router }) {
   const menuItems = [
-    { text: "Головна", path: "/" },
-    { text: "Усі пости", path: "/posts" },
-    { text: "Створити пост", path: "/posts/create" },
+   { text: "Головна", path: "/", icon: <HomeIcon /> },
+    { text: "Усі пости", path: "/posts", icon: <ArticleIcon /> },
+    { text: "Створити пост", path: "/posts/create", icon: <PostAddIcon /> },
   ];
 
   return (
@@ -21,8 +26,10 @@ export default function DrawerMenu({ open, onClose, router }) {
           {menuItems.map((item) => (
             <ListItemButton
               key={item.text}
-              onClick={() => router.push(item.path)}
+              component={Link}
+              href={item.path} 
             >
+              <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           ))}

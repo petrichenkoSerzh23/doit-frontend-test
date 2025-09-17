@@ -1,0 +1,65 @@
+"use client";
+import { Box, Typography, Button, Stack, Paper } from "@mui/material";
+import Link from "next/link";
+import ArticleIcon from "@mui/icons-material/FormatListBulleted";
+
+import PostAddIcon from "@mui/icons-material/AddCircleSharp";
+export default function HomeHero() {
+  return (
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="flex-start"
+      minHeight="40vh"
+      sx={{
+        backgroundColor: "background.default",
+        px: 2,
+        minWidth: 600,
+        mt: 8,
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          p: 4,
+          textAlign: "center",
+          borderRadius: 3,
+        background: "linear-gradient(to bottom right, rgba(144, 202, 249, 0.4), rgba(248, 187, 208, 0.4))",
+   }}
+      >
+        <Typography variant="h2" component="h1" gutterBottom>
+          Ласкаво просимо до DOiT MVP
+        </Typography>
+
+        <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+          Ми працюємо над MVP освітньої платформи. Приєднуйтесь до команди!
+        </Typography>
+
+        <Stack direction="row" spacing={2} justifyContent="center" mt={3}>
+          <Button
+          component={Link}
+            href="/posts"
+            variant="contained"
+            sx={{
+              backgroundColor: "#2196f3",
+              "&:hover": {
+                backgroundColor: "#1976d2",
+              },
+            }}
+            startIcon={<ArticleIcon />}
+          >
+            Переглянути пости
+          </Button>
+          <Button
+            href="/posts/create"
+            variant="outlined"
+            color="primary"
+            startIcon={<PostAddIcon />}
+          >
+            Додати пост
+          </Button>
+        </Stack>
+      </Paper>
+    </Box>
+  );
+}
