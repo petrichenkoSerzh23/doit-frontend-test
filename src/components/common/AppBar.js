@@ -18,7 +18,6 @@ export default function AppBarCustom({ onMenuClick }) {
       }}
     >
       <Toolbar>
-        {/* Кнопка відкриття Drawer */}
         <IconButton
           edge="start"
           color="inherit"
@@ -29,12 +28,10 @@ export default function AppBarCustom({ onMenuClick }) {
           <MenuIcon />
         </IconButton>
 
-        {/* Назва AppBar */}
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           DOiT MVP
         </Typography>
 
-        {/* Перемикач світла/темна тема */}
         <ThemeToggle />
       </Toolbar>
     </AppBar>

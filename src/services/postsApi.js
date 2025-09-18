@@ -1,5 +1,3 @@
-import { Update } from "@mui/icons-material";
-import { create } from "@mui/material/styles/createTransitions";
 
 const API_URL = "https://jsonplaceholder.typicode.com";
 

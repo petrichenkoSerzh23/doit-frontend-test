@@ -5,7 +5,6 @@ import {
   nanoid,
 } from "@reduxjs/toolkit";
 import { postsApi } from "@/services/postsApi";
-import { create } from "@mui/material/styles/createTransitions";
 
 const postsAdapter = createEntityAdapter({
   selectId: (post) => post.id,
@@ -100,3 +99,8 @@ const postsSlice = createSlice({
       });
   },
 });
+
+export default postsSlice.reducer;
+export const { selectAll: selectAllPosts } = postsAdapter.getSelectors(
+  state => state.posts
+);
