@@ -8,13 +8,14 @@ import {
   Box,
 } from "@mui/material";
 import Link from "next/link";
-import HomeIcon from "@mui/icons-material/Home"; // головна
-import ArticleIcon from "@mui/icons-material/Article"; // усі пости
-import PostAddIcon from "@mui/icons-material/PostAdd";
+import HomeIcon from "@mui/icons-material/Home";
+import ArticleIcon from "@mui/icons-material/Article";
+
+import PostAddIcon from "@mui/icons-material/AddCircleSharp";
 
 export default function DrawerMenu({ open, onClose, router }) {
   const menuItems = [
-   { text: "Головна", path: "/", icon: <HomeIcon /> },
+    { text: "Головна", path: "/", icon: <HomeIcon /> },
     { text: "Усі пости", path: "/posts", icon: <ArticleIcon /> },
     { text: "Створити пост", path: "/posts/create", icon: <PostAddIcon /> },
   ];
@@ -24,11 +25,7 @@ export default function DrawerMenu({ open, onClose, router }) {
       <Box sx={{ width: 250 }} role="presentation" onClick={onClose}>
         <List>
           {menuItems.map((item) => (
-            <ListItemButton
-              key={item.text}
-              component={Link}
-              href={item.path} 
-            >
+            <ListItemButton key={item.text} component={Link} href={item.path}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>

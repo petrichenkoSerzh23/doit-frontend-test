@@ -1,5 +1,5 @@
 "use client";
-import { Box, Container, Typography, Button } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import PostForm from "../../../components/posts/PostForm";
 export default function CreatePostPage() {
   return (
@@ -11,8 +11,8 @@ export default function CreatePostPage() {
           mb: 4,
           boxShadow: 3,
           borderRadius: 2,
-          px: 5, // padding слева/справа
-          py: 4, // padding сверху/снизу
+          px: 5,
+          py: 4,
         }}
       >
         <PostForm />

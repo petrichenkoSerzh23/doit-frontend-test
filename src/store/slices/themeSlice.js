@@ -21,5 +21,6 @@ const themeSlice = createSlice({
 });
 
 export const { toggleTheme, setTheme } = themeSlice.actions;
+export const selectThemeMode = (state) => state.theme.theme;
 
 export default themeSlice.reducer;

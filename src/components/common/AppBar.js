@@ -3,18 +3,32 @@
 import React from "react";
 import { AppBar, Toolbar, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useTheme } from "@mui/material/styles";
 import ThemeToggle from "./ThemeToggle";
-
+import { usePathname } from "next/navigation";
+import ChatWithBadge from "./ChatWithBadge";
 export default function AppBarCustom({ onMenuClick }) {
-  const theme = useTheme();
+  const pathname = usePathname();
+
+  const getTitle = () => {
+    if (pathname === "/") return "DOiT MVP";
+    if (pathname === "/posts") return "Усі пости";
+
+    if (pathname.startsWith("/posts/")) {
+      const id = pathname.split("/posts/")[1];
+      return `Пост #${id}`;
+    }
+
+    return "DOiT MVP";
+  };
+
+  const showChatIcon = pathname.startsWith("/posts/");
 
   return (
     <AppBar
       position="static"
       sx={{
-        backgroundColor: "#2196f3", // завжди синій
-        color: "#fff", // текст і іконки білі
+        backgroundColor: "#2196f3",
+        color: "#fff",
       }}
     >
       <Toolbar>
@@ -29,10 +43,11 @@ export default function AppBarCustom({ onMenuClick }) {
         </IconButton>
 
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          DOiT MVP
+          {getTitle()}
         </Typography>
 
         <ThemeToggle />
+         {showChatIcon && <ChatWithBadge />}
       </Toolbar>
     </AppBar>
   );

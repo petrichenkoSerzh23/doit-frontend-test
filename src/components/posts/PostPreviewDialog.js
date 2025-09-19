@@ -1,6 +1,5 @@
 "use client";
 import CircularProgress from "@mui/material/CircularProgress";
-
 import React from "react";
 import {
   Dialog,
@@ -27,10 +26,10 @@ export default function PostPreviewDialog({
       <DialogContent
         dividers
         sx={{
-          maxHeight: "60vh", // ограничение по высоте
-          overflowY: "auto", // вертикальный скролл
-          overflowX: "hidden", // без горизонтального
-          display: "flex", // делаем flex-контейнер
+          maxHeight: "60vh",
+          overflowY: "auto",
+          overflowX: "hidden",
+          display: "flex",
           flexDirection: "column",
         }}
       >
@@ -57,7 +56,12 @@ export default function PostPreviewDialog({
           Редагувати
         </Button>
 
-        <Button variant="contained" onClick={onConfirm} disabled={submitting}>
+        <Button
+          variant="contained"
+          onClick={onConfirm}
+          disabled={submitting}
+          sx={{ color: "##2196f3" }}
+        >
           {submitting ? (
             <span style={{ display: "inline-flex", alignItems: "center" }}>
               <CircularProgress size={18} color="inherit" />

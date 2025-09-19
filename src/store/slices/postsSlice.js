@@ -13,7 +13,10 @@ const postsAdapter = createEntityAdapter({
 const initialState = postsAdapter.getInitialState({
   status: "idle",
   error: null,
+  items: [],
 });
+
+const postsSelectors = postsAdapter.getSelectors((state) => state.posts);
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
@@ -49,6 +52,9 @@ export const createPost = createAsyncThunk(
   }
 );
 
+export const selectPostById = (state, postId) =>
+  postsSelectors.selectById(state, postId);
+
 export const updatePost = createAsyncThunk(
   "posts/updatePost",
   async ({ id, patch }, { rejectWithValue }) => {
@@ -62,9 +68,11 @@ export const updatePost = createAsyncThunk(
 
 export const deletePost = createAsyncThunk(
   "posts/deletePost",
-  async ({ id, patch }, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      return await postsApi.delete(id, patch);
+      await postsApi.delete(id);
+
+      return { id };
     } catch (err) {
       return rejectWithValue(err.message);
     }
@@ -102,5 +110,5 @@ const postsSlice = createSlice({
 
 export default postsSlice.reducer;
 export const { selectAll: selectAllPosts } = postsAdapter.getSelectors(
-  state => state.posts
+  (state) => state.posts
 );

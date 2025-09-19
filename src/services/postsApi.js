@@ -1,4 +1,3 @@
-
 const API_URL = "https://jsonplaceholder.typicode.com";
 
 async function handleResponce(res) {
@@ -14,7 +13,7 @@ export const postsApi = {
   fetchById: (id) => fetch(`${API_URL}/posts/${id}`).then(handleResponce),
 
   create: (post) => {
-   return fetch(`${API_URL}/posts`, {
+    return fetch(`${API_URL}/posts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +23,7 @@ export const postsApi = {
   },
 
   update: (id, patch) => {
-   return fetch(`${API_URL}/posts/${id}`, {
+    return fetch(`${API_URL}/posts/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -40,6 +39,7 @@ export const postsApi = {
       if (!res.ok) {
         throw new Error("Delete failed");
       }
+
       return { id };
     });
   },

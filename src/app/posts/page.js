@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../../store/slices/postsSlice";
 import PostList from "../../components/posts/PostList";
-import SearchBar from "../../components/common/SearchBar";
 import { selectAllPosts } from "../../store/slices/postsSlice";
-import { SpeedDialCreatePost } from "../../components/common/SpeedDialCreatePost";
+import Link from "@mui/material/Link";
+import PostFab from "@/components/posts/PostFab";
 
 export default function PostsPage() {
   const dispatch = useDispatch();
@@ -19,12 +19,11 @@ export default function PostsPage() {
     }
   }, [status, dispatch]);
   return (
-    <Box >
-      <Container maxWidth="lg" >
-        <SearchBar />
+    <Box sx={{ mt: 4 }}>
+      <Container maxWidth="lg">
+      
         <PostList posts={posts} isLoading={status === "loading"} />
-
-        {/* <SpeedDialCreatePost />  */}
+        <PostFab component={Link} href="/posts/create" />
       </Container>
     </Box>
   );
