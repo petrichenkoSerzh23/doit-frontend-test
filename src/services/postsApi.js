@@ -12,6 +12,9 @@ export const postsApi = {
 
   fetchById: (id) => fetch(`${API_URL}/posts/${id}`).then(handleResponce),
 
+  fetchCommentsByPostId: (id) =>
+    fetch(`${API_URL}/posts/${id}/comments`).then(handleResponce),
+
   create: (post) => {
     return fetch(`${API_URL}/posts`, {
       method: "POST",

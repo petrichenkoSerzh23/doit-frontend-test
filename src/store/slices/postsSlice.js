@@ -3,6 +3,7 @@ import {
   createAsyncThunk,
   createEntityAdapter,
   nanoid,
+  createSelector,
 } from "@reduxjs/toolkit";
 import { postsApi } from "@/services/postsApi";
 
@@ -14,6 +15,7 @@ const initialState = postsAdapter.getInitialState({
   status: "idle",
   error: null,
   items: [],
+  comments: {},
 });
 
 const postsSelectors = postsAdapter.getSelectors((state) => state.posts);
@@ -34,6 +36,17 @@ export const fetchPostById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       return await postsApi.fetchById(id);
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const fetchCommentsByPostId = createAsyncThunk(
+  "posts/fetchCommentsByPostId",
+  async (id, { rejectWithValue }) => {
+    try {
+      return await postsApi.fetchCommentsByPostId(id);
     } catch (err) {
       return rejectWithValue(err.message);
     }
@@ -104,6 +117,10 @@ const postsSlice = createSlice({
       })
       .addCase(deletePost.fulfilled, (state, action) => {
         postsAdapter.removeOne(state, action.payload.id);
+      })
+      .addCase(fetchCommentsByPostId.fulfilled, (state, action) => {
+        const postId = action.meta.arg;
+        state.comments[postId] = action.payload;
       });
   },
 });
@@ -111,4 +128,9 @@ const postsSlice = createSlice({
 export default postsSlice.reducer;
 export const { selectAll: selectAllPosts } = postsAdapter.getSelectors(
   (state) => state.posts
+);
+
+export const selectCommentsByPostId = createSelector(
+  [(state) => state.posts.comments, (_, postId) => postId],
+  (comments, postId) => comments[postId] || []
 );

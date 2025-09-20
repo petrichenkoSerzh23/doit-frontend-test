@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DOiT Frontend Test
+
+Repository: [petrichenkoSerzh23/doit-frontend-test](https://github.com/petrichenkoSerzh23/doit-frontend-test)
+
+## Description
+
+Test task: implementation of a Single Page Application (**SPA**) with full CRUD operations for posts, light/dark theme support, and Material Design based on **Next.js 14**.
+
+## Tech Stack
+
+- **Next.js 14 (App Router)**
+- **React 18** with hooks
+- **Redux Toolkit** (store, slices, actions, selectors, async thunks)
+- **Material-UI v5** for all UI components
+- **JavaScript (ES6+)**
+- **API:** [JSONPlaceholder](https://jsonplaceholder.typicode.com)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have **Node.js** (v18+) and a package manager installed:
+
+- [npm](https://www.npmjs.com/)
+- [yarn](https://yarnpkg.com/)
+- [pnpm](https://pnpm.io/)
+- [bun](https://bun.sh/)
+
+### Installation & Running
+
+Clone the repository, install dependencies and start the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/petrichenkoSerzh23/doit-frontend-test.git
+cd doit-frontend-test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# install dependencies
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# or
 
-## Learn More
+yarn install
 
-To learn more about Next.js, take a look at the following resources:
+# or
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+pnpm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# or
 
-## Deploy on Vercel
+bun install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# run the development server
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+npm run dev
+
+# or
+
+yarn dev
+
+# or
+
+pnpm dev
+
+# or
+
+bun dev
+
+## Folder descriptions
+
+- **public/** → static files available at the root (e.g., `/next.svg`).
+- **src/app/** → Next.js App Router directory. Contains routes (`/`, `/posts`, `/posts/create`, `/posts/[id]`), layouts, and global styles.
+- **src/app/providers/** → Context providers for Redux and MUI Theme.
+- **src/components/common/** → Shared UI elements used across pages (AppBar, Drawer, SearchBar, Skeletons, Snackbar).
+- **src/components/posts/** → Components related to posts (PostCard, PostList, PostForm, CommentsDialog, etc.).
+- **src/services/** → API layer (e.g., `postsApi.js` for JSONPlaceholder integration).
+- **src/store/** → State management setup with Redux Toolkit.
+- **slices/** → Feature slices (`postsSlice.js`, `themeSlice.js`).
+- **store.js** → Root Redux store.
+- **src/styles/** → CSS modules or global style files.
+- **src/utils/** → Helper functions (e.g., post-related actions).
+
+## Usage / Features
+
+The application provides the following functionality:
+
+- Home page with hero section, navigation drawer, and theme toggle.
+- Posts list with search, skeleton loaders, cards, and quick create via SpeedDial.
+- Post details page with full content, comments dialog, and delete option.
+- Create post page with multi-step form (Stepper), preview dialog, and success notification (Snackbar).
+
+## API
+
+This project uses the public fake API [JSONPlaceholder](https://jsonplaceholder.typicode.com) for data simulation.  
+Main resource: **/posts**
+
+Available operations:
+
+- `GET /posts` – fetch all posts
+- `GET /posts/:id` – fetch a single post
+- `POST /posts` – create a new post
+- `PUT /posts/:id` – update an existing post
+- `DELETE /posts/:id` – delete a post
+
+## Recommendations / Roadmap
+
+Planned or potential improvements:
+
+- Add unit tests for key components and Redux logic
+- Use **RTK Query** for data fetching and caching
+- Improve responsiveness and mobile support
+- Enhance UX with better loading states (spinners, skeletons) and error handling
