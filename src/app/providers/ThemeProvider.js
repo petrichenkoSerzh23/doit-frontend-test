@@ -1,14 +1,12 @@
 "use client";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-
-import { setTheme } from "../../store/slices/themeSlice";
-
 import {
   ThemeProvider as MuiThemeProvider,
   CssBaseline,
   createTheme,
 } from "@mui/material";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setTheme } from "@/store/slices/themeSlice";
 
 const lightTheme = createTheme({
   palette: {

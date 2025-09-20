@@ -6,15 +6,13 @@ import {
   Avatar,
   IconButton,
   Typography,
-  Button,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch } from "react-redux";
-
 import { useRouter } from "next/navigation";
+import { handleDeletePost } from "@/utils/postActions";
 
-import { handleDeletePost } from "../../utils/postActions";
 export default function PostCard({ post }) {
   const dispatch = useDispatch();
   const router = useRouter();

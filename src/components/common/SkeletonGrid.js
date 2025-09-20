@@ -1,4 +1,3 @@
-// SkeletonPostCard.js
 import {
   Card,
   CardHeader,
@@ -21,7 +20,6 @@ export default function SkeletonPostCard({ count = 12 }) {
               subheader={<Skeleton variant="text" width="40%" />}
               action={<Skeleton variant="circular" width={40} height={40} />}
             />
-
             <CardContent>
               <Skeleton variant="text" width="100%" />
               <Skeleton variant="text" width="90%" />

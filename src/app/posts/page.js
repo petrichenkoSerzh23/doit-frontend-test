@@ -1,12 +1,11 @@
 "use client";
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container } from "@mui/material";
+import Link from "@mui/material/Link";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts } from "../../store/slices/postsSlice";
-import PostList from "../../components/posts/PostList";
-import { selectAllPosts } from "../../store/slices/postsSlice";
-import Link from "@mui/material/Link";
+import PostList from "@/components/posts/PostList";
 import PostFab from "@/components/posts/PostFab";
+import { fetchPosts, selectAllPosts } from "@/store/slices/postsSlice";
 
 export default function PostsPage() {
   const dispatch = useDispatch();
@@ -21,7 +20,6 @@ export default function PostsPage() {
   return (
     <Box sx={{ mt: 4 }}>
       <Container maxWidth="lg">
-      
         <PostList posts={posts} isLoading={status === "loading"} />
         <PostFab component={Link} href="/posts/create" />
       </Container>

@@ -1,17 +1,23 @@
 "use client";
 
 import React from "react";
-import { AppBar, Toolbar, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import ThemeToggle from "./ThemeToggle";
+import { AppBar, Toolbar, IconButton, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
+
 import ChatWithBadge from "./ChatWithBadge";
 export default function AppBarCustom({ onMenuClick }) {
   const pathname = usePathname();
 
   const getTitle = () => {
-    if (pathname === "/") return "DOiT MVP";
-    if (pathname === "/posts") return "Усі пости";
+    const titles = {
+      "/": "DOiT MVP",
+      "/posts": "Усі пости",
+      "/posts/create": "Створити пост",
+    };
+
+    if (titles[pathname]) return titles[pathname];
 
     if (pathname.startsWith("/posts/")) {
       const id = pathname.split("/posts/")[1];
@@ -47,7 +53,7 @@ export default function AppBarCustom({ onMenuClick }) {
         </Typography>
 
         <ThemeToggle />
-         {showChatIcon && <ChatWithBadge />}
+        {showChatIcon && <ChatWithBadge />}
       </Toolbar>
     </AppBar>
   );

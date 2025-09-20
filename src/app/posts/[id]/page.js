@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useEffect,useState } from "react";
-
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchPostById } from "../../../store/slices/postsSlice";
-import CustomLoader from "@/components/common/CustomLoader";
-import { selectPostById } from "../../../store/slices/postsSlice";
-import PostDetail from "../../../components/posts/PostDetail";
+import React, { useEffect } from "react";
 import { useParams } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPostById,selectPostById } from "@/store/slices/postsSlice";
+import CustomLoader from "@/components/common/CustomLoader";
+import PostDetail from "@/components/posts/PostDetail";
+
 
 export default function PostsByIdPage() {
   const { id } = useParams();
@@ -25,7 +23,6 @@ export default function PostsByIdPage() {
   if (status === "loading" || !post) {
     return <CustomLoader />;
   }
-  
 
-  return <PostDetail post={post}  />;
+  return <PostDetail post={post} />;
 }

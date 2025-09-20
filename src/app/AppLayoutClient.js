@@ -3,10 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-
-import AppBarCustom from "../components/common/AppBar";
-import DrawerMenu from "../components/common/AppDrawer";
-import { toggleTheme } from "../store/slices/themeSlice";
+import AppBarCustom from "@/components/common/AppBar";
+import DrawerMenu from "@/components/common/AppDrawer";
+import { toggleTheme } from "@/store/slices/themeSlice";
 
 export default function AppLayoutClient({ children }) {
   const router = useRouter();
@@ -30,7 +29,11 @@ export default function AppLayoutClient({ children }) {
           toggleTheme={handleToggleTheme}
         />
       </header>
-      <DrawerMenu open={drawerOpen} onClose={handleDrawerClose} router={router} />
+      <DrawerMenu
+        open={drawerOpen}
+        onClose={handleDrawerClose}
+        router={router}
+      />
       <main>{children}</main>
       <footer></footer>
     </div>

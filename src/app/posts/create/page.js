@@ -1,6 +1,6 @@
 "use client";
 import { Box, Container } from "@mui/material";
-import PostForm from "../../../components/posts/PostForm";
+import PostForm from "@/components/posts/PostForm";
 export default function CreatePostPage() {
   return (
     <Box>

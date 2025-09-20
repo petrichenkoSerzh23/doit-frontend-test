@@ -15,7 +15,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { handleDeletePost } from "@/utils/postActions";
-import { selectThemeMode } from "../../store/slices/themeSlice";
+import { selectThemeMode } from "@/store/slices/themeSlice";
 export default function PostDetail({ post }) {
   const dispatch = useDispatch();
   const router = useRouter();

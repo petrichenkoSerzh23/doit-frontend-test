@@ -9,14 +9,13 @@ import {
   StepLabel,
   TextField,
   Stack,
-  CircularProgress,
   InputAdornment,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { createPost } from "../../store/slices/postsSlice";
-import PostPreviewDialog from "../../components/posts/PostPreviewDialog";
-import CustomSnackbar from "../common/CustomSnackbar";
+import { createPost } from "@/store/slices/postsSlice";
+import PostPreviewDialog from "@/components/posts/PostPreviewDialog";
+import CustomSnackbar from "@/components/common/CustomSnackbar";
 
 const steps = ["Заголовок", "Тіло", "Попередній перегляд"];
 
@@ -55,7 +54,6 @@ export default function PostForm() {
       const payload = { title: title.trim(), body: body.trim(), userId: 1 };
       await dispatch(createPost(payload)).unwrap();
 
-      // показываем Snackbar
       setSnackbarOpen(true);
       setSubmitting(false);
     } catch (err) {
@@ -152,8 +150,6 @@ export default function PostForm() {
         }}
         submitting={submitting}
       />
-
-      {/* Snackbar */}
       <CustomSnackbar
         open={snackbarOpen}
         onClose={handleSnackbarClose}

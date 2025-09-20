@@ -1,11 +1,11 @@
 import { Grid } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import SearchBar from "../../components/common/SearchBar";
+import SearchBar from "@/components/common/SearchBar";
+import SkeletonGrid from "@/components/common/SkeletonGrid";
 import PostCard from "./PostCard";
-import SkeletonGrid from "../common/SkeletonGrid";
 
-import { fetchPosts, selectAllPosts } from "../../store/slices/postsSlice";
+import { fetchPosts, selectAllPosts } from "@/store/slices/postsSlice";
 export default function PostList({ isLoading }) {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,7 +30,7 @@ export default function PostList({ isLoading }) {
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Поиск по заголовку..."
       />
-    
+
       <Grid container spacing={2}>
         {isLoading ? (
           <SkeletonGrid />

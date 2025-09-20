@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { selectThemeMode } from "@/store/slices/themeSlice";
 
 export default function HomeHero() {
-  const themeMode = useSelector(selectThemeMode); // "light" или "dark"
+  const themeMode = useSelector(selectThemeMode);
 
   return (
     <Box
